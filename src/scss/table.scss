@@ -17,6 +17,7 @@
   }
 
   .row-info {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,14 +27,38 @@
     border-top: none;
     background: #f8f9fa;
 
+    & .row-resize {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 4px;
+      opacity: 0;
+      background: $primary-color;
+      z-index: 1000;
+
+      &:hover {
+        opacity: 1;
+        cursor: row-resize;
+
+        &:after {
+          content: '';
+          width: 1px;
+          margin-left: 2px;
+          background: $primary-color;
+          height: 100%;
+        }
+      }
+    }
+
 
   }
   .row-data {
     display: flex;
-
   }
 
   .column {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,6 +69,30 @@
     border: 1px solid $border-color;
     border-top: none;
     border-left: none;
+
+    & .col-resize {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 4px;
+      background: $primary-color;
+      z-index: 1000;
+
+      &:hover {
+        opacity: 1;
+        cursor: col-resize;
+
+        &:after {
+          content: '';
+          width: 1px;
+          margin-left: 2px;
+          background: $primary-color;
+          height: 100%;
+        }
+      }
+    }
   }
 
   .cell {
@@ -59,8 +108,7 @@
 
     &.selected {
       border: none;
-      outline: 2px solid #3c74ff;
+      outline: 2px solid $primary-color;
     }
-
   }
 }
