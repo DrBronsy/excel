@@ -19,7 +19,12 @@ const jsLoaders = () => {
   }];
 
   if (isDev) {
-    loaders.push('eslint-loader');
+    loaders.push({
+      loader: 'eslint-loader',
+      options: {
+        fix: true,
+      },
+    });
   }
 
   return loaders;
